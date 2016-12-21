@@ -1,24 +1,60 @@
-#include <iostream>
-#include <cstdlib>
-int compare(const void * x1, const void * x2)
-{
-  return (  *(double*)x2-*(double*)x1 );
+#include <bits/stdc++.h>
+using namespace std;
+int v[12];
+void FifthFunc() {
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
+			v[4] = i; v[6] = j;
+			for (int q = 0; q < 12; q++) {
+				cout << v[q];
+			}
+			cout << '\n';
+		 }
+	 }
 }
-void quicksort(double arr[], int n) {
-  qsort(arr, n, sizeof(arr[0]), compare);
+void FourthFunc() {
+	for (int i = 0; i < 10; i++) {
+		v[0] = i;
+		if ((v[0] + v[1] + v[2]) % 2 == 0) {
+			FifthFunc();
+  }
+  }
 }
-int main ()
-{
-  int n = 0, k=0;
-  std::cin >> n;
-  std::cin >> k;
-  double m[n] = {-1};
-  for(int i = 0; i<n; i++)
-    std::cin >> m[i];
-  quicksort(m, n);
-  //std::cout<< m[n];
-  for ( int ix = 0; ix < n; ix++)
-      std::cout << m[ix] << " ";
-  std::cout << "\n m = "<< m[n-k] << '\n';
-  return 0;
+void ThirdFunc() {
+	for (int i = 0; i < 10; i++) {
+		v[10] = i;
+		if ((v[9] + v[10] + v[11]) % 3 == 0) {
+			FourthFunc();
+		}
+	}
+}
+void SecondFunc(int pos, int s) {
+	if (pos >= 12) {
+		if (s % 11 != 0) return;
+		ThirdFunc();
+		return;
+	}
+	if (v[pos] != -1) {
+		SecondFunc(pos + 3, s + v[pos]);
+		return;
+	}
+	for (int i = 0; i < 10; i++) {
+		v[pos] = i;
+		SecondFunc(pos + 3, s + v[pos]);
+	}
+}
+void FirstFunc(int pos, int r) {
+	if (pos >= 12) {
+		if (r) return;
+		SecondFunc(2, 0);
+		return;
+	}
+	for (int i = 0; i <= min(r, 9); i++) {
+		v[pos] = i;
+		FirstFunc(pos + 2, r - i);
+	}
+}
+int main() {
+	for (int i = 0; i < 12; i++) v[i] = -1;
+	FirstFunc(1, 21);
 }
