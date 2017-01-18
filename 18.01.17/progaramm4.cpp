@@ -1,22 +1,20 @@
+#include <iostream>
 using namespace std;
-
 void outer_points(int n, int m);
-
 int main()
 {
 	int n, m;
 	cin >> n >> m;
 	outer_points(n, m);
-
+    return 0;
 }
-
 void outer_points(int n, int m)
 {
-	int *prinadlegnost = new int[m];			
+	int *prinadlegnost = new int[m];										
 	int *point = new int[m];
 	int *a = new int[n];
 	int *b = new int[n];
-	for (int i = 0; i <n; i++)							
+	for (int i = 0; i <n; i++)												
 	{
 		cin >> a[i] >> b[i];
 	}
@@ -37,5 +35,4 @@ void outer_points(int n, int m)
 	{
 		cout << n - prinadlegnost[i] << " ";
 	}
-   return 0;
 }
