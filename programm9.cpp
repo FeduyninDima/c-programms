@@ -12,7 +12,7 @@ int strange_sum(int* a, int n)
         b[i]=a[i];
         c[i]=a[i+n/2];
         }
-        summ = strange_sum( b, n/2 ) + strange_sum ( c, n/2 );
+        summ = strang_sum( b, n/2 ) + strange_sum ( c, n/2 );
     }
     else {
         if ( n != 1 ){
